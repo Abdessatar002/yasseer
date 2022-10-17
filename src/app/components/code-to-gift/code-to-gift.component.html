@@ -1,0 +1,99 @@
+<div class="wrapper fadeInDown">
+    <h2>
+        <div class="fadeIn first">
+            <h2 class="h2active">YASSEER</h2>
+        </div>
+    </h2>
+    <div id="formContent">
+        <!-- Tabs Titles -->
+        <h2 class="">Convertir votre code en cadeau</h2>
+        <!-- <h2 class="inactive underlineHover">Sign Up </h2> -->
+
+        <!-- Icon -->
+        <div class="fadeIn first">
+            <img src="assets/img/yasseer_logo.png" id="" alt="Yasseer" />
+        </div>
+
+
+        <!-- Icon de marque-->
+        <div class="fadeIn first pt-5">
+            <img src="{{logo?logo : 'https://www.woodst.com/wp-content/uploads/2018/08/code-branding-01-2.jpg'}}" id=""
+                alt="User Icon" width="100" height="auto" />
+        </div>
+
+        <!-- Form -->
+        <form #codeForm="ngForm" (ngSubmit)="getMarque(codeForm)" class="pb-3">
+            <input type="text" required [(ngModel)]="inputLogo" id="code" class="fadeIn second" name="code"
+                placeholder="Veuillez entre votre code coupon">
+            <!-- <input *ngIf="logo" [(ngModel)]="tel" type="tel" id="tel" class="fadeIn first" name="tel"
+                placeholder="Ex: 06xxxxxxxx"> -->
+            <input *ngIf="!logo" type="submit" class="fadeIn fourth" value="OK">
+
+        </form>
+
+        <div class="container text-center pb-3 fadeInDown" *ngIf="logo">
+            <div class="">
+                <p *ngIf="logo"> Bravo, vous avez gagné un cadeau de (valeur) avec Pepsi, pour en bénéficier :</p>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div>
+                        <a (click)="onSelectOperator('orange' , $event)" class="underlineHover">
+                            <img src="https://www.kpulse.fr/public/images/integrations/orange-logo.png" id=""
+                                alt="User Icon" width="100" height="auto" />
+                        </a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div>
+                        <a (click)="onSelectOperator('telecom' , $event)" class="underlineHover">
+                            <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/6/6e/Maroc_telecom_logo.svg/1200px-Maroc_telecom_logo.svg.png"
+                                id="" alt="User Icon" width="100" height="auto" />
+                        </a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div>
+                        <a (click)="onSelectOperator('inwi' , $event)" class="underlineHover">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Logo_inwi.svg/2560px-Logo_inwi.svg.png"
+                                id="" alt="User Icon" width="100" height="auto" />
+                        </a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div>
+                        <a (click)="onSelectOperator('onePay' , $event)" class="underlineHover">
+                            <img src="https://static.wixstatic.com/media/4cb13b_eac899609dfd47fc96884595c4430489~mv2.png/v1/fill/w_434,h_118,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/onepaylogocolored%20(1).png"
+                                id="" alt="User Icon" width="100" height="auto" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <form *ngIf="operator" #confirmeForme="ngForm" class="pb-3">
+            <div class="fadeInDown container pb-3">
+                <div *ngIf="operator != 'onePay'" class="fadeIn second">
+                    <p>veuillez choisir la promotion:</p>
+                    <select required name="selectedPromo" [(ngModel)]="selectedPromo">
+                        <option value="promo1">promo1</option>
+                        <option value="promo2">promo2</option>
+                        <option value="promo3">promo3</option>
+                        <option value="promo4">promo4</option>
+                    </select>
+                </div>
+                <div class="fadeIn first">
+                    <p>Veuillez entre votre numéro de téléphone:</p>
+                    <input required [(ngModel)]="tel" type="tel" id="tel" class="" name="tel"
+                        placeholder="Ex: 06xxxxxxxx">
+                </div>
+            </div>
+            <input (click)="confirm(codeForm)" *ngIf="confirmeForme.valid" type="button" class="fadeInDown" value="OK">
+        </form>
+        <a href=""></a>
+        <!-- Link -->
+        <div id="formFooter">
+            <a class="underlineHover">Powered By SisPay</a>
+        </div>
+    </div>
+</div>

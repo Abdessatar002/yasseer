@@ -1,0 +1,18 @@
+.wrapperTab {
+    display: flex;
+    justify-content: flex-start;
+    padding: 30px;
+    width: 90%;
+    max-width: 750px;
+    position: relative;
+    padding: 0px;
+}
+
+.wrapperTab>a {
+    padding: 10px;
+    font-size: larger;
+}
+
+.wrapperTab>a:hover {
+    font-weight: bold;
+}
