@@ -8,6 +8,8 @@ import { RegisterComponent } from './components/login/register/register.componen
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AuthGuard } from './guard/auth.guard';
 import {AccountComponent} from "./components/account/account.component";
+import {ProfileComponent} from "./components/account/profile/profile.component";
+import {ResetPasswordComponent} from "./components/account/reset-password/reset-password.component";
 
 const routes: Routes = [
   {
@@ -19,7 +21,12 @@ const routes: Routes = [
   },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'code-to-gift', component: CodeToGiftComponent },
-  { path: 'account', component: AccountComponent },
+  { path: 'account', component: AccountComponent , children: [
+      { path: '', redirectTo: 'profile', pathMatch: 'full' },
+      { path: 'profile', component: ProfileComponent },
+      { path: 'reset-password', component: ResetPasswordComponent },
+    ]
+  },
 
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent, pathMatch: 'full' },

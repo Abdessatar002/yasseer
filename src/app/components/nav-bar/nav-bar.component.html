@@ -60,16 +60,17 @@
                 </li>
                 <li class="border-top my-3"></li>
                 <li class="mb-1">
-                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+                    <button routerLinkActive="active" class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
                         data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
                         Account
                     </button>
                     <div class="collapse" id="account-collapse">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">New...</a></li>
-                            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Profile</a>
+                            <li>
+                              <a (click)="displaySideBar()" routerLink="account/profile" routerLinkActive="navLinkActive" class="link-dark d-inline-flex text-decoration-none rounded">Profile</a>
                             </li>
-                            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Settings</a>
+                            <li>
+                              <a (click)="displaySideBar()" routerLink="account/reset-password" routerLinkActive="navLinkActive" class="link-dark d-inline-flex text-decoration-none rounded">Password</a>
                             </li>
                             <li><a type="button" (click)="logOut()"
                                     class="link-dark d-inline-flex text-decoration-none rounded">Sign out</a></li>

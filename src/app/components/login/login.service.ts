@@ -9,19 +9,23 @@ import { User } from './user';
   providedIn: 'root'
 })
 export class LoginService {
-  loginUrl = 'http://localhost:8083/distributor/loginToYasseer'
+  loginUrl = 'http://localhost:8083/distributor'
   url = environment.url;
   private jwtHelper = new JwtHelperService();
   constructor(private http: HttpClient) { }
 
   loggedInUser: BehaviorSubject<User> = new BehaviorSubject<User>(this.getUserFromLocalStorage());
 
-  public login(user: User): Observable<HttpResponse<any>> {
+  /*public login(user: User): Observable<HttpResponse<any>> {
     return this.http.post<HttpResponse<any>>(`${this.url}/user/login`, user, { observe: 'response' })
+  }*/
+
+  public login(user: User): Observable<User> {
+    return this.http.post<User>(`${this.loginUrl}/loginToPortalYasseer`, user)
   }
 
-  public loginTest(user: User): Observable<any> {
-    return this.http.post<any>(`${this.loginUrl}`, user)
+  public getTransaction(): Observable<any> {
+    return this.http.post<any>(`${this.loginUrl}/updatePortalYasseerUser`,{})
   }
 
   public logOut() {

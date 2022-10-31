@@ -5,18 +5,17 @@
 
     <!-- Login Form -->
     <form #loginForm="ngForm" class="fadeInDown" (ngSubmit)="onLogin(loginForm)">
-      <input type="text" ngModel id="login" class="" name="login" placeholder="Username/E-mail">
-      <input type="password" ngModel id="password" class="" name="password" placeholder="Password">
-<!--        <input *ngIf="!loading" type="submit" class="fadeIn second" value="Log In">-->
-      <button type="submit" class="button-primary fadeIn second">
+      <input type="text"  required ngModel id="login" class="" name="login" placeholder="Username/E-mail">
+      <input type="password" required ngModel id="password" class="" name="password" placeholder="Password">
+      <button [disabled]="loginForm.invalid" type="submit" class="button-primary fadeIn second">
          <span *ngIf="!loading">Login</span>
         <i *ngIf="loading" class="far fa-life-ring fa-spin"></i>
       </button>
     </form>
-
     <!-- Remind Password -->
     <div id="formFooter">
         <a class="underlineHover" href="#">Forgot Password?</a>
     </div>
+
 
 </div>

@@ -12,12 +12,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidebarModule } from 'primeng/sidebar';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AccountComponent } from './components/account/account.component';
 import { ProfileComponent } from './components/account/profile/profile.component';
 import { ResetPasswordComponent } from './components/account/reset-password/reset-password.component';
+import {ToastModule} from 'primeng/toast';
+import {RippleModule} from "primeng/ripple";
+import {MessageModule} from "primeng/message";
+import {AuthInterceptor} from "./interceptors/auth.interceptor";
 
 @NgModule({
   declarations: [
@@ -40,11 +44,16 @@ import { ResetPasswordComponent } from './components/account/reset-password/rese
     HttpClientModule,
     FormsModule,
     SidebarModule,
-    ToggleButtonModule
+    ToggleButtonModule,
+    RippleModule,
+    MessageModule,
+    ToastModule
 
 
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
